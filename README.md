@@ -21,7 +21,7 @@ A Complication of PowerShell scripts to set security configurations (with rollba
 ### Disable WPAD
 - Disables WPAD to prevent unauthorized proxy configuration.
 
-###Mark Domain Admin Accounts as Sensitive and Not to Be Delegated
+### Mark Domain Admin Accounts as Sensitive and Not to Be Delegated
 - Ensures domain admin accounts are marked as sensitive and not to be delegated.
 
 ## Roll-back Scripts
