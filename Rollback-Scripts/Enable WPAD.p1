@@ -1,0 +1,12 @@
+# Enable WPAD
+Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxySettingsPerUser" -Value 0
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect" -Value 1
+
+# Verify WPAD is enabled
+$wpadStatus = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect"
+if ($wpadStatus.AutoDetect -eq 1) {
+    Write-Host "WPAD is enabled."
+} else {
+    Write-Host "Failed to enable WPAD."
+}
+

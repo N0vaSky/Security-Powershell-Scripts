@@ -1,0 +1,2 @@
+# Turns off SMB Signing
+Set-SmbServerConfiguration -RequireSecuritySignature $false -Force

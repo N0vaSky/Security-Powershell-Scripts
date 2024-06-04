@@ -1,0 +1,6 @@
+# Run this on the Domain Controller
+
+# This is the default SMB Signing configuration on Domain Controllers: where it is enabled but doesn't require clients to also use SMB Signing to access shares.
+
+# Set SMB Server Configuration to default where it signs communications if client agrees but doesn't require it always
+Set-SmbServerConfiguration -EnableSecuritySignature $true -RequireSecuritySignature $false -Force

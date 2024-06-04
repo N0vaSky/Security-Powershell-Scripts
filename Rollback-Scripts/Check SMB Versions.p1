@@ -1,0 +1,12 @@
+# Quickly Check which SMB versions are enabled on an endpoint.
+
+# Fetch SMB Server Configuration
+$config = Get-SmbServerConfiguration
+
+# Check SMBv1 status and print descriptive output
+$smbv1Status = if ($config.EnableSMB1Protocol) { "enabled" } else { "disabled" }
+Write-Output "SMBv1 is $smbv1Status."
+
+# Check SMBv2 status and print descriptive output
+$smbv2Status = if ($config.EnableSMB2Protocol) { "enabled" } else { "disabled" }
+Write-Output "SMBv2 is $smbv2Status."

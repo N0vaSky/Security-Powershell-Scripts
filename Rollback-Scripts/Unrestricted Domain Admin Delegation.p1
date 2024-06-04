@@ -1,0 +1,37 @@
+# Run this on the Domain Controller
+
+# Ensure the Active Directory module is loaded
+Import-Module ActiveDirectory
+
+# Function to remove the sensitive and not to be delegated mark
+function Unset-SensitiveAndNotDelegated {
+    param (
+        [string]$username
+    )
+    $user = Get-ADUser -Identity $username -Properties UserAccountControl
+    $newUac = $user.UserAccountControl -band (-bnot 0x100000)
+    Set-ADUser -Identity $username -Replace @{UserAccountControl=$newUac}
+    Write-Output "Account unmarked as sensitive and not to be delegated: $username"
+}
+
+# Function to verify if an account is not marked as sensitive and not to be delegated
+function Verify-NotSensitiveAndNotDelegated {
+    param (
+        [string]$username
+    )
+    $user = Get-ADUser -Identity $username -Properties UserAccountControl
+    if (-not ($user.UserAccountControl -band 0x100000)) {
+        Write-Output "Account is correctly unmarked as sensitive and not to be delegated: $username"
+    } else {
+        Write-Output "Failed to unmark account as sensitive and not to be delegated: $username"
+    }
+}
+
+# Get all Domain Admins
+$domainAdmins = Get-ADGroupMember -Identity "Domain Admins"
+
+# Unmark each Domain Admin account as sensitive and not to be delegated and verify
+foreach ($admin in $domainAdmins) {
+    Unset-SensitiveAndNotDelegated -username $admin.SamAccountName
+    Verify-NotSensitiveAndNotDelegated -username $admin.SamAccountName
+}

@@ -1,0 +1,4 @@
+# Enabling SMBv1 is NOT recommended, critical vulnerability. Only enable if absolutely necessary for business operations on older Windows Servers
+
+#Enable SMBv1 
+Set-SmbServerConfiguration -EnableSMB1Protocol $true -Force
