@@ -1,5 +1,5 @@
 # Security-Powershell-Scripts
-A Complication of PowerShell scripts to set security configurations (with rollback scripts). These are meant to be deployed with an RMM across an environment. Some of these scripts are made for Domain Controllers only. 
+A compilation of PowerShell scripts to set security configurations (with rollback scripts). These are meant to be deployed with an RMM across an environment. Some of these scripts are made for Domain Controllers only. 
 
 #### This repository contains a collection of PowerShell scripts designed to enhance the security of Windows environments. Each script addresses specific security concerns, such as disabling insecure features, enforcing robust security policies, and mitigating potential vulnerabilities.
 
