@@ -3,7 +3,7 @@ $sysmonUrl = "https://download.sysinternals.com/files/Sysmon.zip"
 $sysmonConfigUrl = "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml"
 $sysmonZip = "$env:TEMP\Sysmon.zip"
 $sysmonFolder = "$env:TEMP\Sysmon"
-$sysmonConfigPath = "$env:TEMP\sysmonconfig-export.xml"
+$sysmonConfigPath = "C:\SysmonConfig\sysmonconfig-export.xml"
 $sysmonExePath = "C:\Windows\Sysmon.exe"
 
 Write-Output "Checking if Sysmon is already installed..."
