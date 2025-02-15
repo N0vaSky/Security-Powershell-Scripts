@@ -143,14 +143,4 @@ try {
     exit 1
 }
 
-Write-Host "Setting Sysmon event log size limit to 900 MB and configuring retention policy..."
-try {
-    wevtutil sl "Microsoft-Windows-Sysmon/Operational" /ms:943718400
-    wevtutil sl "Microsoft-Windows-Sysmon/Operational" /rt:true
-    Write-Host "Sysmon event log size limit and retention policy configured successfully."
-} catch {
-    Write-Error "Failed to configure Sysmon event log. $($_.Exception.Message)"
-    exit 1
-}
-
 Write-Host "`nSysmon installation and configuration completed successfully!"
